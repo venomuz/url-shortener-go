@@ -23,23 +23,6 @@ definitions:
 info:
   contact: {}
 paths:
-  /{url}:
-    get:
-      description: This api for redirect url
-      parameters:
-      - description: url
-        in: path
-        name: url
-        required: true
-        type: string
-      responses:
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/router.ResError'
-      summary: Redirect url
-      tags:
-      - My-API
   /url:
     post:
       consumes:

@@ -61,32 +61,6 @@ const docTemplate = `{
                     }
                 }
             }
-        },
-        "/{url}": {
-            "get": {
-                "description": "This api for redirect url",
-                "tags": [
-                    "My-API"
-                ],
-                "summary": "Redirect url",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "url",
-                        "name": "url",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/router.ResError"
-                        }
-                    }
-                }
-            }
         }
     },
     "definitions": {
