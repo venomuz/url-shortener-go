@@ -1,21 +1,20 @@
 version: "3.8"
 
 services:
+  redis:
+    container_name: "redis"
+    image: redis:alpine
+    command: redis-server /usr/local/etc/redis/redis.conf --requirepass 112233
+    ports:
+      - "6379:6379"
+    volumes:
+      - $PWD/redis.conf:/usr/local/etc/redis/redis.conf
+
+
   url-short-service:
     container_name: url-short-service
     build: .
     depends_on:
-      - "dbredis"
+      - "redis"
     ports:
-      - "9000:9000"
-
-
-  dbredis:
-    container_name: dbredis
-    image:  redis
-    ports:
-      - "6379:6379"
-
-
-volumes:
-  dbdata:
+      - "8080:8080"

@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"github.com/go-redis/redis/v8"
 	"github.com/venomuz/url-shortener-go/config"
 	_ "github.com/venomuz/url-shortener-go/docs"
@@ -13,12 +12,13 @@ import (
 
 var ctx = context.Background()
 
+//fmt.Sprintf("%s:%d", cfg.RedisHost, cfg.RedisPort)
 func main() {
 	cfg := config.Load()
 	log := logger.New(cfg.LogLevel, "url-short-service")
 	rdb := redis.NewClient(&redis.Options{
-		Addr:     fmt.Sprintf("%s:%d", cfg.RedisHost, cfg.RedisPort),
-		Password: "",
+		Addr:     "redis:6379",
+		Password: cfg.RedisPassword,
 		DB:       0,
 	})
 	redisRepo := storage.NewRedisRepo(rdb)

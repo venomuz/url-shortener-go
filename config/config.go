@@ -24,7 +24,7 @@ func Load() Config {
 
 	c.Environment = cast.ToString(getOrReturnDefault("ENVIRONMENT", "develop"))
 	c.LogLevel = cast.ToString(getOrReturnDefault("LOG_LEVEL", "debug"))
-	c.HTTPPort = cast.ToString(getOrReturnDefault("HTTP_PORT", ":9000"))
+	c.HTTPPort = cast.ToString(getOrReturnDefault("HTTP_PORT", ":8080"))
 	c.CtxTimeout = cast.ToInt(getOrReturnDefault("CTX_TIMEOUT", 7))
 	c.RedisHost = cast.ToString(getOrReturnDefault("REDIS_HOST", "localhost"))
 	c.RedisPort = cast.ToInt(getOrReturnDefault("REDIS_PORT", 6379))
