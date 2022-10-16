@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  url-short-service:
+    container_name: url-short-service
+    build: .
+    depends_on:
+      - "dbredis"
+    ports:
+      - "9000:9000"
+
+
+  dbredis:
+    container_name: dbredis
+    image:  redis
+    ports:
+      - "6379:6379"
+
+
+volumes:
+  dbdata:

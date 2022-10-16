@@ -1,0 +1,73 @@
+definitions:
+  router.CreateShortUrl:
+    properties:
+      link:
+        example: https://github.com/
+        type: string
+    required:
+    - link
+    type: object
+  router.ResError:
+    properties:
+      message:
+        example: error
+        type: string
+    type: object
+  router.ResOk:
+    properties:
+      message:
+        type: string
+      url:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /{url}:
+    get:
+      description: This api for redirect url
+      parameters:
+      - description: url
+        in: path
+        name: url
+        required: true
+        type: string
+      responses:
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/router.ResError'
+      summary: Redirect url
+      tags:
+      - My-API
+  /url:
+    post:
+      consumes:
+      - application/json
+      description: This api short your url
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/router.CreateShortUrl'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/router.ResOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/router.ResError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/router.ResError'
+      summary: Create short url
+      tags:
+      - My-API
+swagger: "2.0"
