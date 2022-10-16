@@ -7,6 +7,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/venomuz/url-shortener-go/config"
 	"github.com/venomuz/url-shortener-go/pkg/logger"
+	"github.com/venomuz/url-shortener-go/router/cors"
 	"github.com/venomuz/url-shortener-go/storage"
 	"log"
 	"math/rand"
@@ -51,7 +52,7 @@ func New(option Option) *gin.Engine {
 
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
-
+	router.Use(cors.New(cors.GinCorsMiddleware()))
 	handler := Opt(&OptionConfig{
 		Logger:    option.Log,
 		Conf:      option.Conf,
