@@ -109,7 +109,7 @@ func (h *Option) CreateUrl(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, ResOk{
-		Url:     "http://52.42.75.134" + h.Conf.HTTPPort + "/" + newLink,
+		Url:     "http://localhost" + h.Conf.HTTPPort + "/" + newLink,
 		Message: "success",
 	})
 }
